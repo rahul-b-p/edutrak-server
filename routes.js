@@ -7,6 +7,7 @@ const jwt = require('./middleware/jwtMiddleware')
 const classController = require('./controller/classController')
 const studentController = require('./controller/studentController')
 const studentModuleContrller = require('./controller/studentModuleController')
+const subScribeControler = require('./controller/subscribeController')
 
 const router = new express.Router()
 
@@ -33,5 +34,9 @@ router.put('/add-attendance/:id',studentController.addAttendanceController)
 
 // 5)Student Module
 router.post('/student-login',studentModuleContrller.studentLoginContrller)
+router.get('/get-class-student/:id',jwt,studentModuleContrller.getClassForStudentControlller)
+
+// subscribe
+router.post('/subscribe',subScribeControler.subScribeControler)
 
 module.exports = router

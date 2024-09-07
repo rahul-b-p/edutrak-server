@@ -12,10 +12,12 @@ const jwtMiddleware =(req,res,next)=>{
     try {
         const jwtResponse = jwt.verify(token,'eduTrakOpen')
         // console.log(jwtResponse);
+        // console.log(userId);
+        
         req.payload = jwtResponse.userId
         next()
     } catch (error) {
-        res.status(406).json('Authorization failed ......... PLease Login',error)
+        res.status(406).json('Authorization failed ......... PLease Login')
     }
 }
 
